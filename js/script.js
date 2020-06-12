@@ -17,8 +17,22 @@ alert(arrayNumeri);
 console.log(arrayNumeri);
 
 // chiuso l'alert parte un timer di 30 secondi con setTimeout
+setTimeout(chiediNumeri, 3000); // TODO: cambiare valore dei ms
 
 // passati 30 secondi creo un promp dentro un ciclo che
 // chiede di inserire i 5 numeri
+function chiediNumeri() {
+
+  // creo una lista dove vengono inseriti i numeri scelti dall'utente
+  var numeriInseriti = [];
+
+  // il ciclo si ferma quando i numeri inseriti arrivano a 5
+  while (numeriInseriti.length < 5) {
+    var numeroUtente = parseInt(prompt('Inserisci 5 numeri'));
+    numeriInseriti.push(numeroUtente);
+  }
+
+  console.log(numeriInseriti);
+}
 
 // finito il ciclo stampo quanti e quali numeri sono stati indovinati
