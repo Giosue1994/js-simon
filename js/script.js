@@ -13,8 +13,8 @@ for (var i = 0; i < 5; i++) {
   arrayNumeriCasuali.push(Math.floor(Math.random() * 100 ) + 1);
 }
 
-alert(arrayNumeriCasuali);
-console.log(arrayNumeriCasuali);
+alert('Tieni a mente questi numeri per 30 secondi: ' + arrayNumeriCasuali);
+console.log('Numeri da indovinare ', arrayNumeriCasuali);
 
 // chiuso l'alert parte un timer di 30 secondi con setTimeout
 setTimeout(chiediNumeri, 500); // TODO: cambiare valore dei ms
@@ -23,29 +23,33 @@ setTimeout(chiediNumeri, 500); // TODO: cambiare valore dei ms
 // chiede di inserire i 5 numeri
 function chiediNumeri() {
 
-  // creo una lista dove vengono inseriti i numeri scelti dall'utente
+  // creo due liste dove vengono inseriti i numeri scelti dall'utente e i numeri individuati
   var numeriInseriti = [];
-  var numeriCorretti = [];
-  var numeriErrati = [];
-
+  var numeriIndividuati = [];
 
   // il ciclo si ferma quando i numeri inseriti arrivano a 5
   while (numeriInseriti.length < 5) {
     var numeroUtente = parseInt(prompt('Inserisci 5 numeri'));
     numeriInseriti.push(numeroUtente);
+      }
 
-    // finito il ciclo stampo quanti e quali numeri sono stati indovinati
-    if (numeriInseriti[i] === arrayNumeriCasuali[i]) {
+      // creo un ciclo che controlla i numeri da indovinare i quelli inseriti dall'utente
+      for (var j = 0; j < arrayNumeriCasuali.length; j++) {
 
-      numeriCorretti.push(numeroUtente);
-      console.log('i numeri corretti sono ' + numeriCorretti);
-    } else {
-      numeriErrati.push(numeroUtente);
-      console.log('i numeri errati sono ' + numeriErrati);
-    }
-  }
+        for (var k = 0; k < numeriInseriti.length; k++) {
 
-  console.log('I numeri corretti inseriti sono: ' + numeriCorretti.length);
+          // se sono uguali vengono inseriti nella lista dei numeri individuati
+          if (numeriInseriti[k] === arrayNumeriCasuali[j]) {
+            numeriIndividuati.push(numeriInseriti[k]);
+          }
 
+        }
+      }
+
+  console.log('Numeri inseriti dall\'utente ' + numeriInseriti);
+
+  //stampo quanti e quali numeri sono stati indovinati
+  console.log('Sono stati indovinati ' + numeriIndividuati.length + ' numeri.');
+  console.log('I numeri individuati sono: ' + numeriIndividuati);
 
 }
